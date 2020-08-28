@@ -25,6 +25,27 @@ function GCF(int1, int2) {
     }
     return commonFactors[commonFactors.length-1];
 }
+function LCM(int1,int2){
+    let x = int1;
+    let y = int2;
+    let int1a = [];
+    let int2a = [];
+    for(let i = 1; i <= y; i++){
+        int1a.push(int1 * i)
+    }
+    for(let i = 1; i <= x; i++){
+        int2a.push(int2 * i)
+    }
+    let lcm;
+    for(let i = 0; i < int1a.length; i++){
+        for(let j = 0; j < int2a.length;j++){
+            if(int1a[i] == int2a[j]){
+                lcm = int1a[i];
+                return lcm;
+            }
+        }
+    }
+}
 function factorsFinder(num) {
     const factors = [];
     const refactors = [];
@@ -37,4 +58,64 @@ function factorsFinder(num) {
         }
     }
     return refactors
+}
+
+function decimalToFractionA(n) {
+    n = parseFloat(n);
+    n = n.toString();
+    let h = n.split('.')[1].length;
+    h = 10 ** h;
+    n = parseFloat(n);
+    n = parseInt(n * h);
+    console.log(n,h)
+    let gcf = GCF(n,h);
+    n /= gcf;
+    h /= gcf
+    return `${n}/${h}`;
+}
+function fractionAddition(){
+    x = document.querySelector("#decimalAdd1").value;
+    y = document.querySelector("#decimalAdd2").value;
+    x = x.split('/');
+    y = y.split('/');
+    let dx = x[1];
+    let dy = y[1];
+    let lcm = LCM(x[1],y[1]);
+    x = (lcm / dx) * x[0];
+    y = (lcm / dy) * y[0];
+    let a = x + y;
+    document.querySelector("#fractionAddition .answer").innerHTML = `${a}/${lcm} or ${eval(a/lcm)}`;
+
+}
+function fractionSubtraction(){
+    x = document.querySelector("#decimalSubtract1").value;
+    y = document.querySelector("#decimalSubtract2").value;
+    x = x.split('/');
+    y = y.split('/');
+    let dx = x[1];
+    let dy = y[1];
+    let lcm = LCM(x[1],y[1]);
+    x = (lcm / dx) * x[0];
+    y = (lcm / dy) * y[0];
+    let a = x - y;
+    document.querySelector("#fractionSubtraction .answer").innerHTML = `${a}/${lcm} or ${eval(a/lcm)}`;
+
+}
+function fractionMultiplication(){
+    x = document.querySelector("#decimalMultiply1").value;
+    y = document.querySelector("#decimalMultiply2").value;
+    x = x.split('/');
+    y = y.split('/');
+    let a = x[0] * y[0];
+    let b = x[1] * y[1];
+    document.querySelector("#fractionMultiplication .answer").innerHTML = `${a}/${b} or ${eval(a/b)}`;
+}
+function fractionDivision(){
+    x = document.querySelector("#decimalDivide1").value;
+    y = document.querySelector("#decimalDivide2").value;
+    x = x.split('/');
+    y = y.split('/');
+    let a = x[0] * y[1];
+    let b = x[1] * y[0];
+    document.querySelector("#fractionDivision .answer").innerHTML = `${a}/${b} or ${eval(a/b)}`;
 }
