@@ -1,0 +1,10 @@
+.header, .resources{
+    text-align: center;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    margin-top: 15em;
+    text-align: center;
+    width: 100vw;
+}
