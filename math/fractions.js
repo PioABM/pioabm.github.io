@@ -84,7 +84,7 @@ function fractionAddition(){
     x = (lcm / dx) * x[0];
     y = (lcm / dy) * y[0];
     let a = x + y;
-    document.querySelector("#fractionAddition .answer").innerHTML = `${a}/${lcm} or ${eval(a/lcm)}`;
+    document.querySelector("#fractionAddition .answer").innerHTML = `${a}/${lcm} or ${simplestForm(a,lcm)} or ${eval(a/lcm)}`;
 
 }
 function fractionSubtraction(){
@@ -98,7 +98,7 @@ function fractionSubtraction(){
     x = (lcm / dx) * x[0];
     y = (lcm / dy) * y[0];
     let a = x - y;
-    document.querySelector("#fractionSubtraction .answer").innerHTML = `${a}/${lcm} or ${eval(a/lcm)}`;
+    document.querySelector("#fractionSubtraction .answer").innerHTML = `${a}/${lcm} or ${simplestForm(a,lcm)} or ${eval(a/lcm)}`;
 
 }
 function fractionMultiplication(){
@@ -108,7 +108,7 @@ function fractionMultiplication(){
     y = y.split('/');
     let a = x[0] * y[0];
     let b = x[1] * y[1];
-    document.querySelector("#fractionMultiplication .answer").innerHTML = `${a}/${b} or ${eval(a/b)}`;
+    document.querySelector("#fractionMultiplication .answer").innerHTML = `${a}/${b} or ${simplestForm(a,b)} or ${eval(a/b)}`;
 }
 function fractionDivision(){
     x = document.querySelector("#decimalDivide1").value;
@@ -117,5 +117,11 @@ function fractionDivision(){
     y = y.split('/');
     let a = x[0] * y[1];
     let b = x[1] * y[0];
-    document.querySelector("#fractionDivision .answer").innerHTML = `${a}/${b} or ${eval(a/b)}`;
+    document.querySelector("#fractionDivision .answer").innerHTML = `${a}/${b} or ${simplestForm(a,b)} or ${eval(a/b)}`;
+}
+function simplestForm(n,d){
+    let gcf = GCF(n,d);
+    n /= gcf;
+    d /= gcf;
+    return `${n}/${d}`;
 }
