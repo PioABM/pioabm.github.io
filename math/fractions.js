@@ -18,6 +18,9 @@ function GCF(int1, int2) {
     let commonFactors = [];
     for(let i = 0; i < int1.length; i++){
         for(let j = 0; j < int2.length;j++){
+            if(int1[i] < int2[j]){
+                break;
+            }
             if(int1[i] == int2[j]){
                 commonFactors.push(int1[i]);
             }
@@ -124,4 +127,9 @@ function simplestForm(n,d){
     n /= gcf;
     d /= gcf;
     return `${n}/${d}`;
+}
+
+function fractionToDecimal(){
+    let ans = (document.querySelector("#fraction").value)
+    document.querySelector("#fractionToDecimal .answer").innerHTML = `${eval(ans)}`;
 }
