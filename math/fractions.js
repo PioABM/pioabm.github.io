@@ -142,3 +142,13 @@ function mixedToImproper(){
     answer = simplestForm(parseInt(answer[0]),parseInt(answer[1]));
     document.querySelector("#mixedToImproper .answer").innerHTML = answer;
 }
+function improperToMixed(){
+    let improper = document.querySelector("#improperFraction").value;
+    improper = improper.split('/');
+    let mixed = Math.floor(improper[0]/improper[1]);
+    let numerator = improper[0] - mixed * improper[1];
+    let fraction = `${numerator}/${improper[1]}`.split("/");
+    fraction = simplestForm(parseInt(fraction[0]),parseInt(fraction[1]));
+    let answer = `${mixed} ${fraction}`;
+    document.querySelector("#improperToMixed .answer").innerHTML = answer;
+}
