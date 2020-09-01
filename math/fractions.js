@@ -133,3 +133,12 @@ function fractionToDecimal(){
     let ans = (document.querySelector("#fraction").value)
     document.querySelector("#fractionToDecimal .answer").innerHTML = `${eval(ans)}`;
 }
+function mixedToImproper(){
+    let mixedNum = document.querySelector("#mixedNumber").value;
+    let mixedFraction =  document.querySelector("#mixedNumberFraction").value;
+    mixedFraction = mixedFraction.split("/");
+    let answer = `${mixedFraction[1] * mixedNum + parseInt(mixedFraction[0])}/${mixedFraction[1]}`
+    answer = answer.split("/");
+    answer = simplestForm(parseInt(answer[0]),parseInt(answer[1]));
+    document.querySelector("#mixedToImproper .answer").innerHTML = answer;
+}
