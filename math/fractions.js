@@ -152,3 +152,9 @@ function improperToMixed(){
     let answer = `${mixed} ${fraction}`;
     document.querySelector("#improperToMixed .answer").innerHTML = answer;
 }
+function toSimplestForm(){
+    let fraction = document.querySelector("#improperFraction").value;
+    fraction = fraction.split('/');
+    fraction = simplestForm(parseInt(fraction[0]),parseInt(fraction[1]));
+    document.querySelector("#toSimplestForm .answer").innerHTML = fraction;
+}
