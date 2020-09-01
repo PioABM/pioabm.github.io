@@ -153,8 +153,10 @@ function improperToMixed(){
     document.querySelector("#improperToMixed .answer").innerHTML = answer;
 }
 function toSimplestForm(){
-    let fraction = document.querySelector("#improperFraction").value;
+    let fraction = document.querySelector("#nonsimpleFraction").value;
+    console.log(fraction);
     fraction = fraction.split('/');
+    console.log(fraction);
     fraction = simplestForm(parseInt(fraction[0]),parseInt(fraction[1]));
     document.querySelector("#toSimplestForm .answer").innerHTML = fraction;
 }
